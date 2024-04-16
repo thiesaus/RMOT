@@ -219,7 +219,7 @@ def main(args):
 
     batch_sampler_train = torch.utils.data.BatchSampler(
         sampler_train, args.batch_size, drop_last=True)
-    if args.dataset_file in ['e2e_rmot']:
+    if args.dataset_file in ['e2e_rmot', 'e2e_rmot17']:
         collate_fn = utils.mot_collate_fn
     else:
         collate_fn = utils.collate_fn
@@ -309,7 +309,7 @@ def main(args):
     writer = SummaryWriter(writer_name)
 
     train_func = train_one_epoch
-    if args.dataset_file in ['e2e_rmot']:
+    if args.dataset_file in ['e2e_rmot', 'e2e_rmot17']:
         train_func = train_one_epoch_rmot
         dataset_train.set_epoch(args.start_epoch)
     for epoch in range(args.start_epoch, args.epochs):

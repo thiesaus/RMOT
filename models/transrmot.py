@@ -803,6 +803,7 @@ class TransRMOT(nn.Module):
 def build(args):
     dataset_to_num_classes = {
         'e2e_rmot': 1,
+        'e2e_rmot17': 1,
     }
     assert args.dataset_file in dataset_to_num_classes
     num_classes = dataset_to_num_classes[args.dataset_file]

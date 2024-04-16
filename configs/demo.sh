@@ -1,0 +1,11 @@
+python main.py --meta_arch rmot \
+    --use_checkpoint --dataset_file e2e_rmot17 \
+    --epoch 1 --with_box_refine --lr_drop 50 --lr 1e-4 \
+    --lr_backbone 1e-5 \
+    --pretrained ./r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint.pth \
+    --output_dir exps/default --batch_size 1 --sample_mode random_interval \
+    --sample_interval 1 --sampler_steps 60 80 90 \
+    --sampler_lengths 2 2 2 2 --update_query_pos \
+    --merger_dropout 0 --dropout 0 --random_drop 0.1 \
+    --fp_ratio 0.3 --query_interaction_layer QIM --refer_loss_coef 2 \
+    --rmot_path ../data/
